@@ -16,11 +16,11 @@ def get_num_samples(pcm_buffer_size, audio_format=DEFAULT_FORMAT):
 
 
 def get_pcm_duration(pcm_buffer_size, audio_format=DEFAULT_FORMAT):
-    return get_num_samples(pcm_buffer_size, audio_format) / audio_format[0]
+    return get_num_samples(pcm_buffer_size, audio_format) // audio_format[0]
 
 
 def read_frames(wav_file, frame_duration_ms=30, yield_remainder=False):
-    frame_size = int(DEFAULT_FORMAT[0] * (frame_duration_ms / 1000.0))
+    frame_size = int(DEFAULT_FORMAT[0] * (frame_duration_ms // 1000))
     while True:
         try:
             data = wav_file.readframes(frame_size)
